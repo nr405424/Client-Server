@@ -1,1 +1,1 @@
-# Brillant-NG
+# Briant-NG
