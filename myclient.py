@@ -89,9 +89,15 @@ def client():
 
             # si c'est le client qui est en train d'ecrire
             else:
-                msg = sys.stdin.readline()
-                clisock.send(usr[0] + " : " + msg)
-                sys.stdout.write("< Me > : "); sys.stdout.flush()
+                try:
+                    msg = sys.stdin.readline()
+                    clisock.send(usr[0] + " : " + msg)
+                    sys.stdout.write("< Me > : "); sys.stdout.flush()
+                except:
+                    print("\n ** Connection lost. **")
+                    clisock.send("** " + usr[0] + " was disconnected. ** \n")
+                    rmvname()
+                    sys.exit()
 
 
 if __name__ == "__main__":
